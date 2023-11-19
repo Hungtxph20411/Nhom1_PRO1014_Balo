@@ -4,6 +4,9 @@
  */
 package Model;
 
+import java.math.BigDecimal;
+import java.util.Date;
+
 /**
  *
  * @author admin
@@ -18,19 +21,21 @@ public class HoaDon {
     private String TenNguoiNhan;
     private String SdtNguoiNhan;
     private String DiaChiNguoiNhan;
-    private double PhiShip;
-    private double TongTien;
-    private int TrangThai;
-    private String NgayTao;
-    private String NgaySua;
+    private BigDecimal PhiShip;
+    private BigDecimal TongTien;
+    private String TrangThai;
+    private Date NgayTao;
+    private Date NgaySua;
     private int NguoiTao;
     private int NguoiSua;
     private int xoa;
+    private KhachHang idKhachHang;
+    private NhanVien idNhanVien;
 
     public HoaDon() {
     }
 
-    public HoaDon(int ID, String MaHoaDon, int IDKhangHang, int IDNhanVien, int IDVoucher, String TenNguoiNhan, String SdtNguoiNhan, String DiaChiNguoiNhan, double PhiShip, double TongTien, int TrangThai, String NgayTao, String NgaySua, int NguoiTao, int NguoiSua, int xoa) {
+    public HoaDon(int ID, String MaHoaDon, int IDKhangHang, int IDNhanVien, int IDVoucher, String TenNguoiNhan, String SdtNguoiNhan, String DiaChiNguoiNhan, BigDecimal PhiShip, BigDecimal TongTien, String TrangThai, Date NgayTao, Date NgaySua, int NguoiTao, int NguoiSua, int xoa, KhachHang idKhachHang, NhanVien idNhanVien) {
         this.ID = ID;
         this.MaHoaDon = MaHoaDon;
         this.IDKhangHang = IDKhangHang;
@@ -47,6 +52,8 @@ public class HoaDon {
         this.NguoiTao = NguoiTao;
         this.NguoiSua = NguoiSua;
         this.xoa = xoa;
+        this.idKhachHang = idKhachHang;
+        this.idNhanVien = idNhanVien;
     }
 
     public int getID() {
@@ -113,43 +120,43 @@ public class HoaDon {
         this.DiaChiNguoiNhan = DiaChiNguoiNhan;
     }
 
-    public double getPhiShip() {
+    public BigDecimal getPhiShip() {
         return PhiShip;
     }
 
-    public void setPhiShip(double PhiShip) {
+    public void setPhiShip(BigDecimal PhiShip) {
         this.PhiShip = PhiShip;
     }
 
-    public double getTongTien() {
+    public BigDecimal getTongTien() {
         return TongTien;
     }
 
-    public void setTongTien(double TongTien) {
+    public void setTongTien(BigDecimal TongTien) {
         this.TongTien = TongTien;
     }
 
-    public int getTrangThai() {
+    public String getTrangThai() {
         return TrangThai;
     }
 
-    public void setTrangThai(int TrangThai) {
+    public void setTrangThai(String TrangThai) {
         this.TrangThai = TrangThai;
     }
 
-    public String getNgayTao() {
+    public Date getNgayTao() {
         return NgayTao;
     }
 
-    public void setNgayTao(String NgayTao) {
+    public void setNgayTao(Date NgayTao) {
         this.NgayTao = NgayTao;
     }
 
-    public String getNgaySua() {
+    public Date getNgaySua() {
         return NgaySua;
     }
 
-    public void setNgaySua(String NgaySua) {
+    public void setNgaySua(Date NgaySua) {
         this.NgaySua = NgaySua;
     }
 
@@ -176,6 +183,24 @@ public class HoaDon {
     public void setXoa(int xoa) {
         this.xoa = xoa;
     }
-    
 
+    public KhachHang getIdKhachHang() {
+        return idKhachHang;
+    }
+
+    public void setIdKhachHang(KhachHang idKhachHang) {
+        this.idKhachHang = idKhachHang;
+    }
+
+    public NhanVien getIdNhanVien() {
+        return idNhanVien;
+    }
+
+    public void setIdNhanVien(NhanVien idNhanVien) {
+        this.idNhanVien = idNhanVien;
+    }
+
+
+
+   
 }
