@@ -25,7 +25,7 @@ public class HoaDonRepo {
     public ArrayList<HoaDon> getAll() {
         ArrayList<HoaDon> hoaDonList = new ArrayList<>();
         sql = "SELECT HoaDon.MaHoaDon, NhanVien.MaNV, KhachHang.tenKH, KhachHang.SDT, HoaDon.NgayTao, "
-                + " HoaDon.TongTien, HoaDon.Trangthai,"
+                + " HoaDon.TongTien, HoaDon.Trangthai,HoaDon.trangthaicbb ,"
                 + "NhanVien.ID AS idNV, NhanVien.MaNV, KhachHang.ID AS idKH, KhachHang.tenKH AS tenKH,KhachHang.SDT AS SDT FROM HoaDon\n"
                 + "LEFT JOIN NhanVien ON HoaDon.IDNhanVien = NhanVien.ID\n"
                 + "LEFT JOIN KhachHang ON HoaDon.IDKhangHang = KhachHang.ID";
@@ -41,6 +41,7 @@ public class HoaDonRepo {
                 Date NgayTao = rs.getDate("NgayTao");
                 BigDecimal TongTien = rs.getBigDecimal("TongTien");
                 String Trangthai = rs.getString("Trangthai");
+                int trangthaicbb = Integer.valueOf(rs.getString("trangthaicbb"));
                 int idnv = Integer.valueOf(rs.getString("idNV"));
                 String MaNV = rs.getString("MaNV");
                 int idkh = Integer.valueOf(rs.getString("idKH"));
@@ -62,6 +63,7 @@ public class HoaDonRepo {
                 hoaDon.setTrangThai(Trangthai);
                 hoaDon.setIdNhanVien(nv);
                 hoaDon.setIdKhachHang(kh);
+                hoaDon.setTrangthaicbb(trangthaicbb);
                 hoaDonList.add(hoaDon);
             }
             return hoaDonList;
@@ -70,6 +72,59 @@ public class HoaDonRepo {
         }
         return null;
     }
+    /////////////////////
+//     public ArrayList<HoaDon> getAllcbb(int trangthaicbb) {
+//        ArrayList<HoaDon> hoaDonList = new ArrayList<>();
+//        sql = "SELECT HoaDon.MaHoaDon, NhanVien.MaNV, KhachHang.tenKH, KhachHang.SDT, HoaDon.NgayTao, "
+//                + " HoaDon.TongTien, HoaDon.Trangthai,HoaDon.trangthaicbb"
+//                + "NhanVien.ID AS idNV, NhanVien.MaNV, KhachHang.ID AS idKH, KhachHang.tenKH AS tenKH,KhachHang.SDT AS SDT FROM HoaDon\n"
+//                + "LEFT JOIN NhanVien ON HoaDon.IDNhanVien = NhanVien.ID\n"
+//                + "LEFT JOIN KhachHang ON HoaDon.IDKhangHang = KhachHang.ID"
+//                + "WHERE trangthaicbb =?";
+//        try {
+//            conn = DBConnect.getConnection();
+//            ps = conn.prepareStatement(sql);
+////            ps.setInt(1,ID );
+//             ps.setInt(1, trangthaicbb);
+//            rs = ps.executeQuery();
+//            while (rs.next()) {
+////                int id = Integer.valueOf((rs.getString(1)));
+//                
+////                UUID idhd = UUID.fromString(rs.getString("id"));
+//                 String MaHoaDon = rs.getString("MaHoaDon");
+//                Date NgayTao = rs.getDate("NgayTao");
+//                BigDecimal TongTien = rs.getBigDecimal("TongTien");
+//                String Trangthai = rs.getString("Trangthai");
+//                int idnv = Integer.valueOf(rs.getString("idNV"));
+//                String MaNV = rs.getString("MaNV");
+//                int idkh = Integer.valueOf(rs.getString("idKH"));
+//                String tenKH = rs.getString("tenKH");
+//                 String SDT = rs.getString("SDT");
+//
+//                NhanVien nv = new NhanVien();
+//                nv.setID(idnv);
+//                nv.setMaNV(MaNV);
+//                KhachHang kh = new KhachHang();
+//                kh.setID(idkh);
+//                kh.setTenKH(tenKH);
+//                kh.setSDT(SDT);
+//
+//                HoaDon hoaDon = new HoaDon();
+//                hoaDon.setMaHoaDon(MaHoaDon);
+//                hoaDon.setNgayTao(NgayTao);
+//                hoaDon.setTongTien(TongTien);
+//                hoaDon.setTrangThai(Trangthai);
+//                hoaDon.setIdNhanVien(nv);
+//                hoaDon.setIdKhachHang(kh);
+//                hoaDonList.add(hoaDon);
+//            }
+//            return hoaDonList;
+//        } catch (Exception e) {
+//            e.printStackTrace();
+//        }
+//        return null;
+//    }
+     ///////////////////
     
     public ArrayList<HoaDon> timKiem(String MaHoaDon){
         ArrayList<HoaDon> listHD = new ArrayList<>();

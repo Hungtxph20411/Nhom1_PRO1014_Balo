@@ -45,43 +45,45 @@ public class HoaDon_View extends javax.swing.JInternalFrame {
         setBorder();
         model = (DefaultTableModel) tblHoaDon.getModel();
         model1 = (DefaultTableModel) tblChiTietHoaDon.getModel();
+
         fillTable();
 //        fillTableHDCT();
-
     }
 
     public void fillTable() {
         listHD = repo.getAll();
         int stt = tblHoaDon.getSelectedRow();
-        stt+=1;
+        stt += 1;
 
         model.setRowCount(0);
         for (HoaDon hd : listHD) {
             model.addRow(new Object[]{
-                stt+=1,
+                stt += 1,
                 hd.getMaHoaDon(),
                 hd.getIdNhanVien().getMaNV(),
                 hd.getIdKhachHang().getTenKH(),
                 hd.getIdKhachHang().getSDT(),
                 hd.getNgayTao(),
                 hd.getTrangThai(),});
-        
+
         }
     }
-    
+    ///
 
+    ///
     public void fillTableHDCT() {
         listHDCT = hdctrepo.getAll();
         model1.setRowCount(0);
         int stt = tblChiTietHoaDon.getSelectedRow();
-        stt+=1;
+        stt += 1;
         for (HoaDonChiTiet hdct : listHDCT) {
             model1.addRow(new Object[]{
-                               stt+=1,
+                stt += 1,
                 hdct.getIdHoaDon().getMaHoaDon(),
                 hdct.getIdSanPham().getTenSP(),
                 hdct.getIdMauSac().getTenMau(),
                 hdct.getIdHang().getTenHang(),
+                hdct.getGiaTien(),
                 hdct.getSoLuong(),
                 hdct.getThanhTien()
             });
@@ -128,7 +130,6 @@ public class HoaDon_View extends javax.swing.JInternalFrame {
         timkiem = new javax.swing.JButton();
         CbbTrangThai = new javax.swing.JComboBox<>();
         jLabel3 = new javax.swing.JLabel();
-        btnLoc = new javax.swing.JButton();
         inexcel = new javax.swing.JButton();
         btnLamMoi = new javax.swing.JButton();
         jPanel2 = new javax.swing.JPanel();
@@ -176,17 +177,17 @@ public class HoaDon_View extends javax.swing.JInternalFrame {
 
         tblChiTietHoaDon.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null}
+                {null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null}
             },
             new String [] {
-                "STT", "Mã HD", "Tên SP", "Màu", "Hãng", "SoLuong", "ThanhTien"
+                "STT", "Mã HD", "Tên SP", "Màu", "Hãng", "Giá Tiền", "SoLuong", "ThanhTien"
             }
         ) {
             Class[] types = new Class [] {
-                java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class
+                java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class
             };
 
             public Class getColumnClass(int columnIndex) {
@@ -215,7 +216,7 @@ public class HoaDon_View extends javax.swing.JInternalFrame {
             }
         });
 
-        CbbTrangThai.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Tất Cả", "Đã Thanh Toán", "Chưa Thanh Toán" }));
+        CbbTrangThai.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Tất Cả", "Chưa Thanh Toán", "Đã Thanh Toán" }));
         CbbTrangThai.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 CbbTrangThaiMouseClicked(evt);
@@ -223,13 +224,6 @@ public class HoaDon_View extends javax.swing.JInternalFrame {
         });
 
         jLabel3.setText("Trạng Thái Hóa Đơn");
-
-        btnLoc.setText("Lọc");
-        btnLoc.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnLocActionPerformed(evt);
-            }
-        });
 
         inexcel.setText("Xuất Danh Sách");
         inexcel.addActionListener(new java.awt.event.ActionListener() {
@@ -272,9 +266,7 @@ public class HoaDon_View extends javax.swing.JInternalFrame {
                         .addComponent(jLabel3)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(CbbTrangThai, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(btnLoc, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(80, 80, 80))))
+                        .addGap(178, 178, 178))))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -285,7 +277,6 @@ public class HoaDon_View extends javax.swing.JInternalFrame {
                     .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(timkiem)
                         .addComponent(txtMaTimKiem, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(btnLoc)
                         .addComponent(CbbTrangThai, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addComponent(jLabel3)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
@@ -371,50 +362,12 @@ public class HoaDon_View extends javax.swing.JInternalFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void btnLocActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLocActionPerformed
-        // TODO add your handling code here:
-                listHD = repo.getAll();
-        model.setRowCount(0);
-        for (HoaDon hd : listHD) {
-        if(CbbTrangThai.getSelectedItem().equals("Đã Thanh Toán")){
-            if(hd.getTrangThai().equals("Ðã Thanh Toán")){
-                       model.addRow(new Object[]{
-                hd.getID(),
-                hd.getMaHoaDon(),
-                hd.getIdNhanVien().getMaNV(),
-                hd.getIdKhachHang().getTenKH(),
-                hd.getIdKhachHang().getSDT(),
-                hd.getNgayTao(),
-                hd.getTrangThai(),});
-            }
-            
-            System.out.println("Lọc ok");
-        }        if(CbbTrangThai.getSelectedItem().equals("Chưa Thanh Toán")){
-            if(hd.getTrangThai().equals("Chưa Thanh Toán")){
-                       model.addRow(new Object[]{
-                hd.getID(),
-                hd.getMaHoaDon(),
-                hd.getIdNhanVien().getMaNV(),
-                hd.getIdKhachHang().getTenKH(),
-                hd.getIdKhachHang().getSDT(),
-                hd.getNgayTao(),
-                hd.getTrangThai(),});
-            }
-            
-            System.out.println("Lọc ok");
-        }else{
-        fillTable();}
-
-        
-        }
-    }//GEN-LAST:event_btnLocActionPerformed
-
     private void inexcelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_inexcelActionPerformed
         // TODO add your handling code here:
         try {
             XSSFWorkbook wordkbook = new XSSFWorkbook();
             XSSFSheet sheet = wordkbook.createSheet("Hóa Đơn");
-            
+
             XSSFRow row = null;
             Cell cell = null;
             row = sheet.createRow(2);
@@ -443,8 +396,6 @@ public class HoaDon_View extends javax.swing.JInternalFrame {
             cell = row.createCell(6, CellType.NUMERIC);
             cell.setCellValue("TRANG THAI");
 
-
-
             listHD = repo.getAll();
             for (int i = 0; i < listHD.size(); i++) {
                 //Modelbook book =arr.get(i);
@@ -469,7 +420,6 @@ public class HoaDon_View extends javax.swing.JInternalFrame {
 
                 cell = row.createCell(6, CellType.NUMERIC);
                 cell.setCellValue(listHD.get(i).getTrangThai());
-
 
             }
 
@@ -496,48 +446,50 @@ public class HoaDon_View extends javax.swing.JInternalFrame {
 
     private void timkiemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_timkiemActionPerformed
         // TODO add your handling code here:
-                listHD = repo.getAll();
-                  model.setRowCount(0);
+        listHD = repo.getAll();
+        int stt = tblHoaDon.getSelectedRow();
+        stt += 1;
+        model.setRowCount(0);
         for (HoaDon hd : listHD) {
-             if(hd.getMaHoaDon().equals(txtMaTimKiem.getText())){
+            if (hd.getMaHoaDon().equals(txtMaTimKiem.getText())) {
                 System.out.println("Tim thấy");
-                 model.addRow(new Object[]{
-                hd.getID(),
-                hd.getMaHoaDon(),
-                hd.getIdNhanVien().getMaNV(),
-                hd.getIdKhachHang().getTenKH(),
-                hd.getIdKhachHang().getSDT(),
-                hd.getNgayTao(),
-                hd.getTrangThai(),});
-             }
-        
+                model.addRow(new Object[]{
+                       stt += 1,
+                    hd.getMaHoaDon(),
+                    hd.getIdNhanVien().getMaNV(),
+                    hd.getIdKhachHang().getTenKH(),
+                    hd.getIdKhachHang().getSDT(),
+                    hd.getNgayTao(),
+                    hd.getTrangThai(),});
+            }
+
         }
-        
-        
-        
+
+
     }//GEN-LAST:event_timkiemActionPerformed
 
     private void tblHoaDonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblHoaDonMouseClicked
         // TODO add your handling code here:
-        
+
         listHD = repo.getAll();
         int rowIndex = tblHoaDon.getSelectedRow();
         HoaDon hd = listHD.get(rowIndex);
-             listHDCT = hdctrepo.getAll();
+        listHDCT = hdctrepo.getAll();
         model1.setRowCount(0);
         int stt = tblChiTietHoaDon.getSelectedRow();
-        stt+=1;
+        stt += 1;
         for (HoaDonChiTiet hdct : listHDCT) {
-            if(hdct.getIdHoaDon().getMaHoaDon().equals(hd.getMaHoaDon())){
-            model1.addRow(new Object[]{
-                               stt+=1,
-                hdct.getIdHoaDon().getMaHoaDon(),
-                hdct.getIdSanPham().getTenSP(),
-                hdct.getIdMauSac().getTenMau(),
-                hdct.getIdHang().getTenHang(),
-                hdct.getSoLuong(),
-                hdct.getThanhTien()
-            });
+            if (hdct.getIdHoaDon().getMaHoaDon().equals(hd.getMaHoaDon())) {
+                model1.addRow(new Object[]{
+                    stt += 1,
+                    hdct.getIdHoaDon().getMaHoaDon(),
+                    hdct.getIdSanPham().getTenSP(),
+                    hdct.getIdMauSac().getTenMau(),
+                    hdct.getIdHang().getTenHang(),
+                     hdct.getGiaTien(),
+                    hdct.getSoLuong(),
+                    hdct.getThanhTien()
+                });
             }
         }
     }//GEN-LAST:event_tblHoaDonMouseClicked
@@ -548,45 +500,42 @@ public class HoaDon_View extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_btnLamMoiActionPerformed
 
     private void CbbTrangThaiMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_CbbTrangThaiMouseClicked
-        // TODO add your handling code here:
-                listHD = repo.getAll();
+        String cbb = (String) CbbTrangThai.getSelectedItem();
+        int ID;
+        System.out.println(cbb);
+        if (cbb.equals("Đã Thanh Toán")) {
+            ID = 1;
+        } else if (cbb.equals("Chưa Thanh Toán")) {
+            ID = 2;
+        }else{ID = 0;}
+        System.out.println(ID);
+        listHD = repo.getAll();
         model.setRowCount(0);
+                int stt = tblHoaDon.getSelectedRow();
+        stt += 1;
         for (HoaDon hd : listHD) {
-        if(CbbTrangThai.getSelectedItem().equals("Đã Thanh Toán")){
-            if(hd.getTrangThai().equals("Ðã Thanh Toán")){
-                       model.addRow(new Object[]{
-                hd.getID(),
-                hd.getMaHoaDon(),
-                hd.getIdNhanVien().getMaNV(),
-                hd.getIdKhachHang().getTenKH(),
-                hd.getIdKhachHang().getSDT(),
-                hd.getNgayTao(),
-                hd.getTrangThai(),});
-            }          
-        }        if(CbbTrangThai.getSelectedItem().equals("Chưa Thanh Toán")){
-            if(hd.getTrangThai().equals("Chưa Thanh Toán")){
-                       model.addRow(new Object[]{
-                hd.getID(),
-                hd.getMaHoaDon(),
-                hd.getIdNhanVien().getMaNV(),
-                hd.getIdKhachHang().getTenKH(),
-                hd.getIdKhachHang().getSDT(),
-                hd.getNgayTao(),
-                hd.getTrangThai(),});
-            }
-            
-            System.out.println("Lọc ok");
-        }else{
-        fillTable();}
+                if (hd.getTrangthaicbb()==ID) {
+                    model.addRow(new Object[]{
+                            stt += 1,
+                        hd.getMaHoaDon(),
+                        hd.getIdNhanVien().getMaNV(),
+                        hd.getIdKhachHang().getTenKH(),
+                        hd.getIdKhachHang().getSDT(),
+                        hd.getNgayTao(),
+                        hd.getTrangThai(),});
+                }
+                if(ID==0){
+                    fillTable();
+                }
         }
-        
+
+
     }//GEN-LAST:event_CbbTrangThaiMouseClicked
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JComboBox<String> CbbTrangThai;
     private javax.swing.JButton btnLamMoi;
-    private javax.swing.JButton btnLoc;
     private javax.swing.JButton inexcel;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel3;

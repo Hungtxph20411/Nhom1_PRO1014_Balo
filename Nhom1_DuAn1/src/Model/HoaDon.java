@@ -29,13 +29,14 @@ public class HoaDon {
     private int NguoiTao;
     private int NguoiSua;
     private int xoa;
+    private int trangthaicbb;
     private KhachHang idKhachHang;
     private NhanVien idNhanVien;
 
     public HoaDon() {
     }
 
-    public HoaDon(int ID, String MaHoaDon, int IDKhangHang, int IDNhanVien, int IDVoucher, String TenNguoiNhan, String SdtNguoiNhan, String DiaChiNguoiNhan, BigDecimal PhiShip, BigDecimal TongTien, String TrangThai, Date NgayTao, Date NgaySua, int NguoiTao, int NguoiSua, int xoa, KhachHang idKhachHang, NhanVien idNhanVien) {
+    public HoaDon(int ID, String MaHoaDon, int IDKhangHang, int IDNhanVien, int IDVoucher, String TenNguoiNhan, String SdtNguoiNhan, String DiaChiNguoiNhan, BigDecimal PhiShip, BigDecimal TongTien, String TrangThai, Date NgayTao, Date NgaySua, int NguoiTao, int NguoiSua, int xoa, int trangthaicbb, KhachHang idKhachHang, NhanVien idNhanVien) {
         this.ID = ID;
         this.MaHoaDon = MaHoaDon;
         this.IDKhangHang = IDKhangHang;
@@ -52,6 +53,7 @@ public class HoaDon {
         this.NguoiTao = NguoiTao;
         this.NguoiSua = NguoiSua;
         this.xoa = xoa;
+        this.trangthaicbb = trangthaicbb;
         this.idKhachHang = idKhachHang;
         this.idNhanVien = idNhanVien;
     }
@@ -184,6 +186,14 @@ public class HoaDon {
         this.xoa = xoa;
     }
 
+    public int getTrangthaicbb() {
+        return trangthaicbb;
+    }
+
+    public void setTrangthaicbb(int trangthaicbb) {
+        this.trangthaicbb = trangthaicbb;
+    }
+
     public KhachHang getIdKhachHang() {
         return idKhachHang;
     }
@@ -200,7 +210,5 @@ public class HoaDon {
         this.idNhanVien = idNhanVien;
     }
 
-
-
-   
+    
 }

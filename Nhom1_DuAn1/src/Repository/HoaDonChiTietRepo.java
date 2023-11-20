@@ -27,7 +27,7 @@ public class HoaDonChiTietRepo {
     public ArrayList<HoaDonChiTiet> getAll() {
         ArrayList<HoaDonChiTiet> hoaDonCTList = new ArrayList<>();
         sql = "SELECT HoaDonChiTiet.MaHoaDonChiTiet,HoaDon.MaHoaDon,SanPham.TenSP,MauSac.TenMau,Hang.TenHang,\n"
-                + "    HoaDonChiTiet.SoLuong,HoaDonChiTiet.ThanhTien,\n"
+                + "    HoaDonChiTiet.SoLuong,HoaDonChiTiet.GiaTien,HoaDonChiTiet.ThanhTien,\n"
                 + "	HoaDon.ID AS IDHoaDon, HoaDon.MaHoaDon, SanPham.ID AS IDSP, SanPham.TenSP AS TenSP ,\n"
                 + "	MauSac.iD AS IDMauSac,MauSac.TenMau AS TenMau,Hang.iD AS IDHang, Hang.TenHang AS TenHang\n"
                 + "FROM HoaDonChiTiet\n"
@@ -44,6 +44,7 @@ public class HoaDonChiTietRepo {
 //                int id = Integer.valueOf((rs.getString(1)));
                 String MaHoaDonChiTiet = rs.getString("MaHoaDonChiTiet");
                 int SoLuong = Integer.valueOf((rs.getString(("SoLuong"))));
+                BigDecimal GiaTien = rs.getBigDecimal("GiaTien");
                 BigDecimal ThanhTien = rs.getBigDecimal("ThanhTien");
 
                 int IDHoaDon = Integer.valueOf(rs.getString("IDHoaDon"));
@@ -73,6 +74,7 @@ public class HoaDonChiTietRepo {
                 hdct.setIdSanPham(sp);
                 hdct.setIdMauSac(ms);
                 hdct.setIdHang(h);
+                hdct.setGiaTien(GiaTien);
                 
                 hoaDonCTList.add(hdct);
             }

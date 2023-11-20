@@ -120,9 +120,7 @@
                               <Component id="jLabel3" min="-2" max="-2" attributes="0"/>
                               <EmptySpace max="-2" attributes="0"/>
                               <Component id="CbbTrangThai" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace type="separate" max="-2" attributes="0"/>
-                              <Component id="btnLoc" min="-2" pref="80" max="-2" attributes="0"/>
-                              <EmptySpace min="-2" pref="80" max="-2" attributes="0"/>
+                              <EmptySpace min="-2" pref="178" max="-2" attributes="0"/>
                           </Group>
                       </Group>
                   </Group>
@@ -137,7 +135,6 @@
                           <Group type="103" groupAlignment="3" attributes="0">
                               <Component id="timkiem" alignment="3" min="-2" max="-2" attributes="0"/>
                               <Component id="txtMaTimKiem" alignment="3" min="-2" max="-2" attributes="0"/>
-                              <Component id="btnLoc" alignment="3" min="-2" max="-2" attributes="0"/>
                               <Component id="CbbTrangThai" alignment="3" min="-2" max="-2" attributes="0"/>
                               <Component id="jLabel3" alignment="3" min="-2" max="-2" attributes="0"/>
                           </Group>
@@ -230,12 +227,13 @@
                     <Component class="javax.swing.JTable" name="tblChiTietHoaDon">
                       <Properties>
                         <Property name="model" type="javax.swing.table.TableModel" editor="org.netbeans.modules.form.editors2.TableModelEditor">
-                          <Table columnCount="7" rowCount="4">
+                          <Table columnCount="8" rowCount="4">
                             <Column editable="true" title="STT" type="java.lang.String"/>
                             <Column editable="true" title="M&#xe3; HD" type="java.lang.String"/>
                             <Column editable="true" title="T&#xea;n SP" type="java.lang.String"/>
                             <Column editable="true" title="M&#xe0;u" type="java.lang.String"/>
                             <Column editable="true" title="H&#xe3;ng" type="java.lang.String"/>
+                            <Column editable="true" title="Gi&#xe1; Ti&#x1ec1;n" type="java.lang.String"/>
                             <Column editable="true" title="SoLuong" type="java.lang.String"/>
                             <Column editable="true" title="ThanhTien" type="java.lang.String"/>
                           </Table>
@@ -259,8 +257,8 @@
                 <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
                   <StringArray count="3">
                     <StringItem index="0" value="T&#x1ea5;t C&#x1ea3;"/>
-                    <StringItem index="1" value="&#x110;&#xe3; Thanh To&#xe1;n"/>
-                    <StringItem index="2" value="Ch&#x1b0;a Thanh To&#xe1;n"/>
+                    <StringItem index="1" value="Ch&#x1b0;a Thanh To&#xe1;n"/>
+                    <StringItem index="2" value="&#x110;&#xe3; Thanh To&#xe1;n"/>
                   </StringArray>
                 </Property>
               </Properties>
@@ -275,14 +273,6 @@
               <Properties>
                 <Property name="text" type="java.lang.String" value="Tr&#x1ea1;ng Th&#xe1;i H&#xf3;a &#x110;&#x1a1;n"/>
               </Properties>
-            </Component>
-            <Component class="javax.swing.JButton" name="btnLoc">
-              <Properties>
-                <Property name="text" type="java.lang.String" value="L&#x1ecd;c"/>
-              </Properties>
-              <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnLocActionPerformed"/>
-              </Events>
             </Component>
             <Component class="javax.swing.JButton" name="inexcel">
               <Properties>
