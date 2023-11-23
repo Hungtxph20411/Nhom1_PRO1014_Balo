@@ -8,17 +8,34 @@ package Model;
  *
  * @author GIGABYTE
  */
-public class SanPham_Model {
+public class SanPham {
+    private int id;
     private String maSP,tenSP;
 
-    public SanPham_Model() {
+    public SanPham() {
     }
 
-    public SanPham_Model(String maSP, String tenSP) {
+    public SanPham(String maSP, String tenSP) {
         this.maSP = maSP;
         this.tenSP = tenSP;
     }
 
+    public SanPham(int id, String maSP, String tenSP) {
+        this.id = id;
+        this.maSP = maSP;
+        this.tenSP = tenSP;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    
+    
     public String getMaSP() {
         return maSP;
     }
@@ -38,4 +55,10 @@ public class SanPham_Model {
     public Object[] toDataRow(){
         return new Object[]{this.maSP,this.tenSP};
     }
+
+    @Override
+    public String toString() {
+        return tenSP;
+    }
+    
 }
